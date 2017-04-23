@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    </head>
+    <body>
+       	<div id="game">
+      		<p>Press the space bar to start playing</p>
+		</div>
+
+
+
+
+
+	<script type="text/javascript">
+		var potentialWords = ["the doors", "curtis mayfield", "the beatles", "ennio morricone", "erik satie", "hank williams", "harry nilsson", "johann sebastian bach", "kronos quartet", "kurt vile", "marty robbins", "midlake", "nils frahm", "philip glass", "radiohead", "spoon", "squarepusher", "sufjan stevens", "timber timbre", "townes van zandt", "uncle acid and the deadbeats", "arvo part", "bassekou kouyate", "bill callahan", "david axelrod", "dungen", "efterklang", "the fucking champs", "pink floyd"];
+		var wins = 0
+		var losses = 0
+		var ties = 0
+		
+		
+		
+		// function placeHolder() {
+		// 	for (var i =0; i < computerWord.length; i++) {
+		// 		if (computerWord.charAt(i) == (" ")) {
+		// 			answerArray.push (" ");
+		// 		}
+		// 		else {
+		// 			answerArray.push ("_");
+		// 		}
+		// 	}
+		// 	var a = answerArray.join(" ");
+		// 	console.log(a);
+		// 	return answerArray;
+		// 	//  display placeholder via HTML
+		// 	// document.getElementById("answer").innerHTML = a;
+		// }
+
+
+		// START GAME WITH SPACE BAR
+		window.onkeyup = function(event) {
+			if (event.keyCode == 32) {
+				var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
+				console.log(computerWord);
+				var lettersGuessed = [];
+				var answerArray = [];
+				var remainingGuesses = (computerWord.length);
+				console.log(remainingGuesses);
+
+				// Here we create the HTML that will be injected into our div and displayed on the page.
+	          	var html = "<p>Guess a letter</p>" +
+	          	"<p>wins: " + wins + "</p>" +
+	          	"<p>losses: " + losses + "</p>" +
+	          	"<p>ties: " + ties + "</p>";
+
+	          	// Injecting the HTML we just created into our div and updating the game information on our page.
+	          	document.querySelector("#game").innerHTML = html;
+
+
+				//load placeholder underscores onto screen
+				for (var i =0; i < computerWord.length; i++) {
+					if (computerWord.charAt(i) == (" ")) {
+						answerArray.push (" ");
+					}
+					else {
+						answerArray.push ("_");
+					}
+				}
+				var a = answerArray.join(" ");
+				console.log(a);
+				//  display placeholder via HTML
+				// document.getElementById("answer").innerHTML = a;
+
+			
+			 	//capture keypress	
+			 	document.onkeyup = function(event) {
+        			//store guess in userGuess variable	
+    				var userGuess = (event.key).toLowerCase();
+    				console.log(userGuess);
+    				if (lettersGuessed.length == 0) {
+    				  lettersGuessed.push(userGuess);
+    				}  
+    				else if (lettersGuessed.length != 0) {
+				      	for (var i = 0; i < lettersGuessed.length; i++) {
+    				  		if (userGuess == lettersGuessed.indexOf[i]) {
+    							console.log("You already guessed this letter.  Guess again");
+    						}
+							else userGuessCleared = userGuess
+			      		}
+    				     lettersGuessed.push(userGuessCleared); 
+    				}
+    				
+    				console.log(lettersGuessed);
+    				
+    				//check letter against lettersGuessed array   doWhile
+				  		//if already guessed, alert already guessed
+    					// else add guess to the lettersGuessed array, display HTML
+    					//subtract one guess, display HTML
+				                                                                                                                                                                                                                                                                     
+				}
+
+			}
+		}
+		
+
+
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
+    
+</html>
+
+
+
+
+
