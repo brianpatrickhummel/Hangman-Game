@@ -6,3 +6,42 @@
 	width: 50%;
 	height: 50%;
 }
+
+
+body {
+	margin-top: 100px;
+	color: yellow;
+	font-size: 38px;
+	text-align: center;
+	font-family: 'VT323', monospace;
+	background: url(images/bg.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+  	background-color: black;
+}
+
+#blink {
+	margin-top: 250px;
+}
+
+h1 {
+	margin-bottom: 100px;
+}
+
+#bgImage {
+	"background-size":"100%;
+}
+
+#image {
+	width:100%; 
+	z-index: 0;
+	text-align: left;
+}
+
+#answer {
+	margin-top: 50px;
+	font-size: 100px;
+	color: orange;
+}

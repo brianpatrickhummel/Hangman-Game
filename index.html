@@ -4,15 +4,18 @@
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-        <!-- Added link to the jQuery Library -->
+        <!-- jQuery Library -->
   		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  		<!-- blink jQuery plugin -->     <!--for the blinking font on the welcome screen-->
+  		<script src="assets/javascript/jquery.blink.js"></script>
   		<!-- Added a link to Bootstrap-->
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">      <!--google fonts-->
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
-    <body>
+    <body id="bgImage" >
        	<div id="game">
-      		<p>Press the space bar to start playing</p>
+      		<p id="blink">Press the space bar to start playing</p>
 		</div>
 		<h1 id="answer"></h1>
 		<div id="lettersG"></div>
@@ -23,15 +26,20 @@
 
 		<script type="text/javascript">
 			$(document).ready(function(){
+				$('#blink').blink();
 				var potentialWords = ["aphex twin", "arvo part", "bassekou kouyate", "curtis mayfield", "dungen", "ennio morricone", "erik satie", "hank williams", "harry nilsson", "johann sebastian bach", "kronos quartet", "kurt vile", "midlake", "nils frahm", "philip glass", "pink floyd", "spoon", "sufjan stevens", "the beatles", "the doors", "the fucking champs", "timber timbre", "townes van zandt", "uncle acid and the deadbeats"];
+
 				var imageLinks = ['assets/images/aphextwin.jpg', 'assets/images/arvo.jpg', 'assets/images/bassekou.jpg', 'assets/images/curtismayfield.jpg', 'assets/images/dungen.jpg', 'assets/images/enniomorricone.jpg', 'assets/images/eriksatie.jpg', 'assets/images/Hank-Williams.jpg', 'assets/images/harrynilsson.jpg', 'assets/images/johannbach.jpg', 'assets/images/KronosQuartet.jpg', 'assets/images/kurtvile.jpg', 'assets/images/midlake.jpg', 'assets/images/nilsfrahm.jpg', 'assets/images/philglass.jpg', 'assets/images/pinkfloyd.jpg', 'assets/images/spoon.jpg', 'assets/images/sufjan.jpg', 'assets/images/thebeatles.jpg', 'assets/images/thedoors.jpg', 'assets/images/thefuckingchamps.jpg', 'assets/images/timber.jpg', 'assets/images/townesvanzandt.jpg', 'assets/images/uncleacid.jpg'];
+
+				var backgroundGifs = ['assets/gifs/1.gif', 'assets/gifs/2.gif', 'assets/gifs/3.gif', 'assets/gifs/4.gif', 'assets/gifs/5.gif'];
 				var wins = 0
 				var losses = 0
-
+			
+				
 				
 				// START GAME WITH SPACE BAR    //PROBLEM: this can trigger reset of game at any time
 				window.onkeyup = function(event) {
-					if (event.keyCode == 32) {   
+					if (event.keyCode == 32) { 
 						var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
 						// console.log(computerWord);
 						var c = potentialWords.indexOf(computerWord); 
@@ -43,15 +51,23 @@
 						// console.log(lettersRemaining);
 						// console.log(remainingGuesses);
 						// console.log(c);
-						function loadPicture () {
+						
+						function loadPicture () {									//function to load image URLs from imageLinks array when game ends
 							$('#image').html('<img src=' + imageIndex + '>');
 						}
+
+						function loadGif () {	                  //function to load background gif
+							var backgroundImage = (backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)]);   //random selects background image from array when game is initialized
+							$('#bgImage').css({'background-image':'url('+backgroundImage+')'});
+							// console.log(backgroundImage);
+						}
+
 						// console.log(imageLinks[c]);
-			          	var html = "<p>Guess a letter</p>" +           //basic HTML for game load screen
-			          	"<p>wins: " + wins + "</p>" +
-			          	"<p>losses: " + losses + "</p>"	          	
+			          	var html = "<p>GUESS A LETTER</p>" +           //basic HTML for game load screen
+			          	"<p>Wins: " + wins + "</p>" +
+			          	"<p>Losses: " + losses + "</p>"	          	
 						document.querySelector("#game").innerHTML = html;   //loading basic HTML screen
-			
+						loadGif();
 						for (var h =0; h < computerWord.length; h++) {      
 							if (computerWord.charAt(h) == (" ")) {        //load placeholder underscores onto screen
 								answerArray.push (" ");
@@ -69,7 +85,7 @@
 		    				// console.log(userGuess);
 		    				// console.log(c);
 		    				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
-		    					alert("You already guessed this letter.  Guess again");
+		    					alert("You have already guessed this letter.  Guess again");
 		    				}
 		    				else {
 	    						var j = (computerWord.indexOf(userGuess));
@@ -98,6 +114,14 @@
 		    					loadPicture();
 		    					wins++;
 		    					$("#answer").html("You have won the game");
+		    					$('#lettersG').html("");
+	    						$('#lettersR').html("");
+	    						$('#guessedLetters').html("");
+		    				}
+		    				if (remainingGuesses == 0) {
+		    					loadPicture();
+		    					losses++;
+		    					$("#answer").html("You have lost the game");
 		    					$('#lettersG').html("");
 	    						$('#lettersR').html("");
 	    						$('#guessedLetters').html("");
