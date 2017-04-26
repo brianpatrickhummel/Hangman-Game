@@ -27,24 +27,21 @@
 				var imageLinks = ['assets/images/aphextwin.jpg', 'assets/images/arvo.jpg', 'assets/images/bassekou.jpg', 'assets/images/curtismayfield.jpg', 'assets/images/dungen.jpg', 'assets/images/enniomorricone.jpg', 'assets/images/eriksatie.jpg', 'assets/images/Hank-Williams.jpg', 'assets/images/harrynilsson.jpg', 'assets/images/johannbach.jpg', 'assets/images/KronosQuartet.jpg', 'assets/images/kurtvile.jpg', 'assets/images/midlake.jpg', 'assets/images/nilsfrahm.jpg', 'assets/images/philglass.jpg', 'assets/images/pinkfloyd.jpg', 'assets/images/spoon.jpg', 'assets/images/sufjan.jpg', 'assets/images/thebeatles.jpg', 'assets/images/thedoors.jpg', 'assets/images/thefuckingchamps.jpg', 'assets/images/timber.jpg', 'assets/images/townesvanzandt.jpg', 'assets/images/uncleacid.jpg'];
 				var wins = 0
 				var losses = 0
-				var ties = 0
 
 				
-				
-			
 				// START GAME WITH SPACE BAR    //PROBLEM: this can trigger reset of game at any time
 				window.onkeyup = function(event) {
 					if (event.keyCode == 32) {   
 						var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
-						console.log(computerWord);
+						// console.log(computerWord);
 						var c = potentialWords.indexOf(computerWord); 
 						var imageIndex =  (imageLinks[c]);    //variable to pull from image array with same index as computerWord
-						var lettersRemaining = (computerWord.length - (computerWord.split(' ').length-1));
+						var lettersRemaining = (computerWord.length - (computerWord.split(' ').length-1));   //will subtract any spaces from lettersRemaining
 						var remainingGuesses = 10 
 						var lettersGuessed = [];
 						var answerArray = []; 
-						console.log(lettersRemaining);
-						console.log(remainingGuesses);
+						// console.log(lettersRemaining);
+						// console.log(remainingGuesses);
 						// console.log(c);
 						function loadPicture () {
 							$('#image').html('<img src=' + imageIndex + '>');
@@ -52,8 +49,7 @@
 						// console.log(imageLinks[c]);
 			          	var html = "<p>Guess a letter</p>" +           //basic HTML for game load screen
 			          	"<p>wins: " + wins + "</p>" +
-			          	"<p>losses: " + losses + "</p>" +
-			          	"<p>ties: " + ties + "</p>";	          	
+			          	"<p>losses: " + losses + "</p>"	          	
 						document.querySelector("#game").innerHTML = html;   //loading basic HTML screen
 			
 						for (var h =0; h < computerWord.length; h++) {      
@@ -65,15 +61,15 @@
 							}
 						}
 						var a = answerArray.join("&nbsp;");
-						console.log(a);
+						// console.log(a);
 						$("#answer").html(a);			//  display placeholder via HTML
 						 
 					 	document.onkeyup = function(event) {		//capture keypress	
 		    				var userGuess = (event.key).toLowerCase();              //store guess in userGuess variable	
-		    				console.log(userGuess);
-		    				console.log(c);
+		    				// console.log(userGuess);
+		    				// console.log(c);
 		    				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
-		    					console.log("You already guessed this letter.  Guess again");
+		    					alert("You already guessed this letter.  Guess again");
 		    				}
 		    				else {
 	    						var j = (computerWord.indexOf(userGuess));
@@ -93,13 +89,18 @@
 	    					$('#lettersR').html("<p>Number of unguessed letters: </p>" + lettersRemaining);
 	    					$('#guessedLetters').html("<p>Incorrect letters guessed: </p>" + lettersGuessed);
 		    				}
-		    				console.log(answerArray);
-		    				console.log(lettersGuessed);
-		    				console.log(lettersRemaining);
-		    				console.log(remainingGuesses);
+		    				// console.log(answerArray);
+		    				// console.log(lettersGuessed);
+		    				// console.log(lettersRemaining);
+		    				// console.log(remainingGuesses);
 		    				document.getElementById("answer").innerHTML = (answerArray.join("&nbsp;"));	
 		    				if (lettersRemaining == 0) {
-		    					loadPicture();	
+		    					loadPicture();
+		    					wins++;
+		    					$("#answer").html("You have won the game");
+		    					$('#lettersG').html("");
+	    						$('#lettersR').html("");
+	    						$('#guessedLetters').html("");
 		    				}
 				        }																		
 					}
