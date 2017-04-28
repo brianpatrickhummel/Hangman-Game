@@ -18,21 +18,22 @@ body {
   	-o-background-size: cover;
   	background-size: cover;
   	background-color: black;
-  	max-height: 700px;
-  	
+  	max-height: 700px;	
 }
-
-
 
 body:before {
 	opacity: 0.1;
 }
 
-
-	
-
 #blink {
 	margin-top: 290px;
+	font-size: 60px;
+}
+
+
+#blink2 {
+	margin-bottom: 200px;
+	font-size: 60px;
 }
 
 h1 {
@@ -40,17 +41,18 @@ h1 {
 	
 }
 #guessBanner {
-	font-size: 50px;
+	font-size: 60px;
 	margin-bottom: 50px;
 	letter-spacing: 8px;
 }
 
 #guessedLetters {
 	letter-spacing: 8px;
+	margin-bottom: 10px;
 }
 
 #lose{
-	margin-bottom: 200px;
+	margin-bottom: 100px;
 }
 
 #image {
@@ -61,7 +63,130 @@ h1 {
 
 #answer {
 	margin-top: 50px;
-	margin-bottom:50px;
+	margin-bottom:100px;
 	font-size: 80px;
-	color: orange;
+	color: orange;	
 }
+
+#lettersG p, #lettersR p, #guessedLetters p {
+	font-size: 38px;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 992px) {  
+
+#guessBanner {
+    font-size: 55px;
+    letter-spacing: 7px;
+	}
+	
+	#win {
+		font-size: 38px;
+	}
+
+ 	#lose {
+		margin-bottom: 100px;
+		font-size: 38px;
+	}
+
+	#answer {
+		margin-top: 25px;
+		font-size: 65px;
+		margin-bottom: 85px;
+	}
+
+	#lettersG p, #lettersR p, #guessedLetters p {
+	font-size: 34px;
+	margin-bottom: 20px;
+	}
+
+	#blink {
+	margin-top: 200px;
+	font-size: 50px;
+	}
+
+	#blink2 {
+		margin-bottom: 150px;
+		font-size: 50px;
+	}
+}
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+
+	#guessBanner {
+    font-size: 45px;
+    letter-spacing: 6px;
+	}
+	
+	#win {
+		font-size: 30px;
+	}
+
+ 	#lose {
+		margin-bottom: 55px;
+		font-size: 30px;
+	}
+
+	#answer {
+		font-size: 45px;
+		line-height: 1.8;
+		margin-bottom:70px;
+	}
+
+	#lettersG p, #lettersR p, #guessedLetters p {
+	font-size: 25px;
+	margin-bottom: 30px;
+	}
+
+	#blink {
+	margin-top: 200px;
+	font-size: 40px;
+	}
+
+	#blink2 {
+		margin-bottom: 150px;
+		font-size: 40px;
+	}
+} 
+
+
+
+
+
+@media only screen and (max-width: 576px) {
+ 	
+ 	#guessBanner {
+    font-size: 40px;
+    letter-spacing: 6px;
+	}
+	
+	#win {
+		font-size: 25px;
+	}
+
+ 	#lose {
+		margin-bottom: 45px;
+		font-size: 25px;
+	}
+
+ 	#answer {
+		font-size: 35px;
+		margin-bottom: 50px;
+	}
+
+	#lettersG p, #lettersR p, #guessedLetters p {
+	font-size: 20px;
+	margin-bottom: 40px;
+	}
+}
+
+
+

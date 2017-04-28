@@ -13,10 +13,10 @@
   		<!--google fonts-->     
   		<link href="https://fonts.googleapis.com/css?family=VT323|Maven+Pro|Orbitron" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen">
     </head>
     <body id="bgImage" >
-	      <div id="container"> 	
+      	<div id="container"> 	
 	       	<div id="game">
 	      		<p id="blink">Press the space bar to start playing</p>
 			</div>
@@ -28,8 +28,8 @@
 		</div>
 
 		<script type="text/javascript">
-			$(document).ready(function(){
-				$('#blink').blink();
+			$(document).ready(function() {
+				$('#blink, #blink2').blink();
 				var potentialWords = ["aphex twin", "arvo part", "bassekou kouyate", "curtis mayfield", "dungen", "ennio morricone", "erik satie", "hank williams", "harry nilsson", "johann sebastian bach", "kronos quartet", "kurt vile", "midlake", "nils frahm", "philip glass", "pink floyd", "spoon", "sufjan stevens", "the beatles", "the doors", "the fucking champs", "timber timbre", "townes van zandt", "uncle acid and the deadbeats"];
 
 				var imageLinks = ['assets/images/aphextwin.jpg', 'assets/images/arvo.jpg', 'assets/images/bassekou.jpg', 'assets/images/curtismayfield.jpg', 'assets/images/dungen.jpg', 'assets/images/enniomorricone.jpg', 'assets/images/eriksatie.jpg', 'assets/images/Hank-Williams.jpg', 'assets/images/harrynilsson.jpg', 'assets/images/johannbach.jpg', 'assets/images/KronosQuartet.jpg', 'assets/images/kurtvile.jpg', 'assets/images/midlake.jpg', 'assets/images/nilsfrahm.jpg', 'assets/images/philglass.jpg', 'assets/images/pinkfloyd.jpg', 'assets/images/spoon.jpg', 'assets/images/sufjan.jpg', 'assets/images/thebeatles.jpg', 'assets/images/thedoors.jpg', 'assets/images/thefuckingchamps.jpg', 'assets/images/timber.jpg', 'assets/images/townesvanzandt.jpg', 'assets/images/uncleacid.jpg'];
@@ -37,11 +37,7 @@
 				var backgroundGifs = ['assets/gifs/1.gif', 'assets/gifs/2.gif', 'assets/gifs/3.gif', 'assets/gifs/4.gif', 'assets/gifs/5.gif'];
 				var wins = 0
 				var losses = 0
-				
 			
-				
-				
-				// START GAME WITH SPACE BAR    //PROBLEM: this can trigger reset of game at any time
 				window.onkeyup = function(event) {
 					if ((event.keyCode == (32))) { 
 						var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
@@ -77,19 +73,13 @@
 						}
 						var a = answerArray.join("&nbsp;");
 						$("#answer").html(a);			//  display placeholder via HTML
-						$('#blink').remove();
-						$('#blink').remove();
+						$('#blink2').remove();
+						$('#blink2').remove();
 
-
-
-
-
-					 	
-					 
 					 	document.onkeypress = function(event) {	   //capture keypress						 		
 		    				var x = event.which;
 		    				var userGuess = "";
-		    				console.log(x);
+		    	
 					 		if (x >= 65  && x <= 90 ) {
 		    				var userGuess = (String.fromCharCode(x).toLowerCase());
 		    				}
@@ -99,22 +89,15 @@
 		    				else if (x == 32) {
 		    					return false;
 		    				}
-
 		    				else {
 		    					alert("Please enter an alphabetical letter");
 		              		}
 		              
 
-
-
-
-
-
 		    				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
 		    					alert("You have already guessed this letter.  Guess again");
 		    				}
 		    				else if ((lettersRemaining != 0) && (remainingGuesses != 0)) {
-	    					
 	    						var j = (computerWord.indexOf(userGuess));
 			    				if (j === -1) {
 			    					lettersGuessed.push(userGuess);
@@ -127,47 +110,42 @@
 			    							lettersRemaining--;  
 			    							}
 			    						}
-			    				
 			    				}
-	    					$('#lettersG').html("<p>Guesses Remaining: " + remainingGuesses + " </p>");
-	    					$('#lettersR').html("<p>Number of unguessed letters: " + lettersRemaining + "</p>");
-	    					$('#guessedLetters').html("<p>Incorrect letters guessed: " + lettersGuessed + "</p>");
-		    				
-		    				document.getElementById("answer").innerHTML = (answerArray.join("&nbsp;"));	
-		    				
-		    				
-		    				if (lettersRemaining === 0) {
-		    					loadPicture();
-		    					wins++;
-		    					$("#win").html('Wins: ' + wins);
-		    					$("#guessBanner").html("");
-		    					$("#answer").html("You have won the game");
-		    					$('#lettersG').html("");
-	    						$('#lettersR').html("");
-	    						$('#guessedLetters').html("");
-	    						$('<div>').attr('id','blink').css({'color':'white', 'font-size': '80px'}).text('Press Space Bar To Play Again').appendTo('#container');
-								$('#blink').blink();
-	    						
-		    				}
-		    				if (remainingGuesses === 0) {
-		    					loadPicture();
-		    					losses++;
-		    					$("#lose").html('Losses: ' + losses);
-		    					$("#guessBanner").html("");
-		    					$("#answer").html("You have lost the game");
-		    					$('#lettersG').remove();
-	    						$('#lettersR').remove();
-	    						$('#guessedLetters').remove();
-	    						$('<div>').attr('id','blink').css({'color':'white', 'font-size': '80px'}).text('Press Space Bar To Play Again').appendTo('#container');
-								$('#blink').blink();
-	    						
-		    				}
-				    	}		
-				       	
-				      }
-				        													
+	    					
+		    					$('#lettersG').html("<p>Guesses Remaining: " + remainingGuesses + " </p>");
+		    					$('#lettersR').html("<p>Number of unguessed letters: " + lettersRemaining + "</p>");
+		    					$('#guessedLetters').html("<p>Incorrect letters guessed: " + lettersGuessed + "</p>");
+			    				document.getElementById("answer").innerHTML = (answerArray.join("&nbsp;"));	
+			    				
+			    				if (lettersRemaining === 0) {
+			    					loadPicture();
+			    					wins++;
+			    					$("#win").html('Wins: ' + wins);
+			    					$("#guessBanner").html("");
+			    					$("#answer").html("You have won the game");
+			    					$('#lettersG').html("");
+		    						$('#lettersR').html("");
+		    						$('#guessedLetters').html("");
+		    						$('<div>').attr('id','blink2').css({'color':'blue'}).text('Press Space Bar To Play Again').appendTo('#container');
+									$('#blink2').blink();
+		    						
+			    				}
+			    				if (remainingGuesses === 0) {
+			    					loadPicture();
+			    					losses++;
+			    					$("#lose").html('Losses: ' + losses);
+			    					$("#guessBanner").html("");
+			    					$("#answer").html("You have lost the game");
+			    					$('#lettersG').html("");
+		    						$('#lettersR').html("");
+		    						$('#guessedLetters').html("");
+		    						$('<div>').attr('id','blink2').css({'color':'blue'}).text('Press Space Bar To Play Again').appendTo('#container');
+									$('#blink2').blink();		    						
+			    				}
+				    		}					       	
+				      	}
 					}
-				}	
+				};
 			});
 		</script>
 	</body>
