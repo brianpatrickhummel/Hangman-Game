@@ -2,46 +2,66 @@
 	box-sizing: border-box;
 }
 
-#image {
-	width: 50%;
-	height: 50%;
-}
-
 
 body {
-	margin-top: 100px;
+	margin: 100px 0;
 	color: yellow;
 	font-size: 38px;
 	text-align: center;
-	font-family: 'VT323', monospace;
-	background: url(images/bg.jpg) no-repeat center center fixed; 
+	letter-spacing: 3px;
+	/*font-family: 'VT323', monospace;*/
+	font-family: 'Orbitron', sans-serif;
+	/*font-family: 'Maven Pro', sans-serif;*/
+	background:  no-repeat center center fixed; 
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
   	background-color: black;
+  	max-height: 700px;
+  	
 }
 
+
+
+body:before {
+	opacity: 0.1;
+}
+
+
+	
+
 #blink {
-	margin-top: 250px;
+	margin-top: 290px;
 }
 
 h1 {
-	margin-bottom: 100px;
+	margin-bottom: 50px;
+	
+}
+#guessBanner {
+	font-size: 50px;
+	margin-bottom: 50px;
+	letter-spacing: 8px;
 }
 
-#bgImage {
-	"background-size":"100%;
+#guessedLetters {
+	letter-spacing: 8px;
+}
+
+#lose{
+	margin-bottom: 200px;
 }
 
 #image {
-	width:100%; 
-	z-index: 0;
+	width: 100%;
+	height: auto;
 	text-align: left;
 }
 
 #answer {
 	margin-top: 50px;
-	font-size: 100px;
+	margin-bottom:50px;
+	font-size: 80px;
 	color: orange;
 }

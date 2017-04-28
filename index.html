@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title></title>
+        <title>HANGMAN</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <!-- jQuery Library -->
@@ -10,19 +10,22 @@
   		<script src="assets/javascript/jquery.blink.js"></script>
   		<!-- Added a link to Bootstrap-->
   		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  		<link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">      <!--google fonts-->
+  		<!--google fonts-->     
+  		<link href="https://fonts.googleapis.com/css?family=VT323|Maven+Pro|Orbitron" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body id="bgImage" >
-       	<div id="game">
-      		<p id="blink">Press the space bar to start playing</p>
+	      <div id="container"> 	
+	       	<div id="game">
+	      		<p id="blink">Press the space bar to start playing</p>
+			</div>
+			<h1 id="answer"></h1>
+			<div id="lettersG"></div>
+			<div id="lettersR"></div>
+			<div id="guessedLetters"></div>
+			<div id="image"></div>
 		</div>
-		<h1 id="answer"></h1>
-		<div id="lettersG"></div>
-		<div id="lettersR"></div>
-		<div id="guessedLetters"></div>
-		<div id="image"></div>
-		
 
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -34,38 +37,34 @@
 				var backgroundGifs = ['assets/gifs/1.gif', 'assets/gifs/2.gif', 'assets/gifs/3.gif', 'assets/gifs/4.gif', 'assets/gifs/5.gif'];
 				var wins = 0
 				var losses = 0
+				
 			
 				
 				
 				// START GAME WITH SPACE BAR    //PROBLEM: this can trigger reset of game at any time
 				window.onkeyup = function(event) {
-					if (event.keyCode == 32) { 
+					if ((event.keyCode == (32))) { 
 						var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
 						// console.log(computerWord);
 						var c = potentialWords.indexOf(computerWord); 
 						var imageIndex =  (imageLinks[c]);    //variable to pull from image array with same index as computerWord
 						var lettersRemaining = (computerWord.length - (computerWord.split(' ').length-1));   //will subtract any spaces from lettersRemaining
-						var remainingGuesses = 10 
+						var remainingGuesses = 8 
 						var lettersGuessed = [];
 						var answerArray = []; 
-						// console.log(lettersRemaining);
-						// console.log(remainingGuesses);
-						// console.log(c);
 						
 						function loadPicture () {									//function to load image URLs from imageLinks array when game ends
-							$('#image').html('<img src=' + imageIndex + '>');
+							$('#bgImage').css({'background-image':'url('+imageIndex+')'});
 						}
 
 						function loadGif () {	                  //function to load background gif
 							var backgroundImage = (backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)]);   //random selects background image from array when game is initialized
 							$('#bgImage').css({'background-image':'url('+backgroundImage+')'});
-							// console.log(backgroundImage);
 						}
 
-						// console.log(imageLinks[c]);
-			          	var html = "<p>GUESS A LETTER</p>" +           //basic HTML for game load screen
-			          	"<p>Wins: " + wins + "</p>" +
-			          	"<p>Losses: " + losses + "</p>"	          	
+			          	var html = "<p id='guessBanner'>GUESS A LETTER</p>" +           //basic HTML for game load screen
+			          	"<p id= 'win' >Wins: " + wins + "</p>" +
+			          	"<p id= 'lose' >Losses: " + losses + "</p>"	          	
 						document.querySelector("#game").innerHTML = html;   //loading basic HTML screen
 						loadGif();
 						for (var h =0; h < computerWord.length; h++) {      
@@ -77,17 +76,45 @@
 							}
 						}
 						var a = answerArray.join("&nbsp;");
-						// console.log(a);
 						$("#answer").html(a);			//  display placeholder via HTML
-						 
-					 	document.onkeyup = function(event) {		//capture keypress	
-		    				var userGuess = (event.key).toLowerCase();              //store guess in userGuess variable	
-		    				// console.log(userGuess);
-		    				// console.log(c);
+						$('#blink').remove();
+						$('#blink').remove();
+
+
+
+
+
+					 	
+					 
+					 	document.onkeypress = function(event) {	   //capture keypress						 		
+		    				var x = event.which;
+		    				var userGuess = "";
+		    				console.log(x);
+					 		if (x >= 65  && x <= 90 ) {
+		    				var userGuess = (String.fromCharCode(x).toLowerCase());
+		    				}
+		    				else if (x >= 97 && x <= 122) {
+		    					var userGuess = (String.fromCharCode(x));
+		    				}
+		    				else if (x == 32) {
+		    					return false;
+		    				}
+
+		    				else {
+		    					alert("Please enter an alphabetical letter");
+		              		}
+		              
+
+
+
+
+
+
 		    				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
 		    					alert("You have already guessed this letter.  Guess again");
 		    				}
-		    				else {
+		    				else if ((lettersRemaining != 0) && (remainingGuesses != 0)) {
+	    					
 	    						var j = (computerWord.indexOf(userGuess));
 			    				if (j === -1) {
 			    					lettersGuessed.push(userGuess);
@@ -100,33 +127,45 @@
 			    							lettersRemaining--;  
 			    							}
 			    						}
-			    					}
-	    					$('#lettersG').html("<p>Guesses Remaining: </p>" + remainingGuesses);
-	    					$('#lettersR').html("<p>Number of unguessed letters: </p>" + lettersRemaining);
-	    					$('#guessedLetters').html("<p>Incorrect letters guessed: </p>" + lettersGuessed);
-		    				}
-		    				// console.log(answerArray);
-		    				// console.log(lettersGuessed);
-		    				// console.log(lettersRemaining);
-		    				// console.log(remainingGuesses);
+			    				
+			    				}
+	    					$('#lettersG').html("<p>Guesses Remaining: " + remainingGuesses + " </p>");
+	    					$('#lettersR').html("<p>Number of unguessed letters: " + lettersRemaining + "</p>");
+	    					$('#guessedLetters').html("<p>Incorrect letters guessed: " + lettersGuessed + "</p>");
+		    				
 		    				document.getElementById("answer").innerHTML = (answerArray.join("&nbsp;"));	
-		    				if (lettersRemaining == 0) {
+		    				
+		    				
+		    				if (lettersRemaining === 0) {
 		    					loadPicture();
 		    					wins++;
+		    					$("#win").html('Wins: ' + wins);
+		    					$("#guessBanner").html("");
 		    					$("#answer").html("You have won the game");
 		    					$('#lettersG').html("");
 	    						$('#lettersR').html("");
 	    						$('#guessedLetters').html("");
+	    						$('<div>').attr('id','blink').css({'color':'white', 'font-size': '80px'}).text('Press Space Bar To Play Again').appendTo('#container');
+								$('#blink').blink();
+	    						
 		    				}
-		    				if (remainingGuesses == 0) {
+		    				if (remainingGuesses === 0) {
 		    					loadPicture();
 		    					losses++;
+		    					$("#lose").html('Losses: ' + losses);
+		    					$("#guessBanner").html("");
 		    					$("#answer").html("You have lost the game");
-		    					$('#lettersG').html("");
-	    						$('#lettersR').html("");
-	    						$('#guessedLetters').html("");
+		    					$('#lettersG').remove();
+	    						$('#lettersR').remove();
+	    						$('#guessedLetters').remove();
+	    						$('<div>').attr('id','blink').css({'color':'white', 'font-size': '80px'}).text('Press Space Bar To Play Again').appendTo('#container');
+								$('#blink').blink();
+	    						
 		    				}
-				        }																		
+				    	}		
+				       	
+				      }
+				        													
 					}
 				}	
 			});
