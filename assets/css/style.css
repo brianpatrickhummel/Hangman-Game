@@ -4,7 +4,7 @@
 
 
 body {
-	margin: 100px 0;
+	margin:  50px 0;
 	color: yellow;
 	font-size: 38px;
 	text-align: center;
@@ -18,18 +18,12 @@ body {
   	-o-background-size: cover;
   	background-size: cover;
   	background-color: black;
-  	max-height: 700px;	
-}
-
-body:before {
-	opacity: 0.1;
 }
 
 #blink {
 	margin-top: 290px;
 	font-size: 60px;
 }
-
 
 #blink2 {
 	margin-bottom: 200px;
@@ -64,12 +58,14 @@ h1 {
 #answer {
 	margin-top: 50px;
 	margin-bottom:100px;
-	font-size: 80px;
+	font-size: 55px;
 	color: orange;	
+	width: 100%;
+	text-align: center;
 }
 
 #lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 38px;
+	font-size: 28px;
 }
 
 
@@ -95,12 +91,12 @@ h1 {
 
 	#answer {
 		margin-top: 25px;
-		font-size: 65px;
+		font-size: 55px;
 		margin-bottom: 85px;
 	}
 
 	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 34px;
+	font-size: 26px;
 	margin-bottom: 20px;
 	}
 
@@ -138,11 +134,11 @@ h1 {
 	#answer {
 		font-size: 45px;
 		line-height: 1.8;
-		margin-bottom:70px;
+		margin-bottom:80px;
 	}
 
 	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 25px;
+	font-size: 20px;
 	margin-bottom: 30px;
 	}
 
@@ -179,11 +175,11 @@ h1 {
 
  	#answer {
 		font-size: 35px;
-		margin-bottom: 50px;
+		margin-bottom: 75px;
 	}
 
 	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 20px;
+	font-size: 18px;
 	margin-bottom: 40px;
 	}
 }
