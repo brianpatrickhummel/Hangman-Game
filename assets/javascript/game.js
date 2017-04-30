@@ -4,13 +4,9 @@ $(document).ready(function() {
 	var wins = 0;
 	var losses = 0;
 	var potentialWords = ["aphex twin", "arvo part", "bassekou kouyate", "curtis mayfield", "destoyer", "hans zimmer", "harry nilsson", "johann sebastian bach", "kronos quartet", "kurt vile", "midlake", "nils frahm", "philip glass", "pink floyd", "spoon", "sufjan stevens", "the beatles", "the doors", "timber timbre", "townes van zandt", "uncle acid and the deadbeats"];
-
 	var imageLinks = ['assets/images/aphextwin.jpg', 'assets/images/arvo.jpg', 'assets/images/bassekou.jpg', 'assets/images/curtismayfield.jpg', 'assets/images/destroyer.jpg', 'assets/images/HansZimmer.jpg', 'assets/images/harrynilsson.jpg', 'assets/images/johannbach.jpg', 'assets/images/KronosQuartet.jpg', 'assets/images/kurtvile.jpg', 'assets/images/midlake.jpg', 'assets/images/nilsfrahm.jpg', 'assets/images/philglass.jpg', 'assets/images/pinkfloyd.jpg', 'assets/images/spoon.jpg', 'assets/images/sufjan.jpg', 'assets/images/thebeatles.jpg', 'assets/images/thedoors.jpg', 'assets/images/timber.jpg', 'assets/images/townesvanzandt.jpg', 'assets/images/uncleacid.jpg'];
-
 	var backgroundGifs = ['assets/gifs/1.gif', 'assets/gifs/2.gif', 'assets/gifs/3.gif', 'assets/gifs/4.gif', 'assets/gifs/5.gif'];
-
 	var songs = ["assets/music/AphexTwin.mp3","assets/music/ArvoPart.mp3","assets/music/BassekouKouyate.mp3","assets/music/CurtisMayfield.mp3","assets/music/Destroyer.mp3","assets/music/HanzZimmer.mp3","assets/music/HarryNilsson.mp3","assets/music/johannsebastianbach.mp3","assets/music/kronosquartetlachrymaeantiquae.mp3","assets/music/KurtVile.mp3","assets/music/midlakechildrenofthegrounds.mp3","assets/music/NilsFrahm.mp3","assets/music/PhilipGlass.mp3","assets/music/PinkFloyd.mp3","assets/music/spoon.mp3","assets/music/SufjanStevens.mp3","assets/music/TheBeatles.mp3","assets/music/theDoors.mp3","assets/music/TimberTimbre.mp3","assets/music/TownesVanZandt.mp3","assets/music/uncleacid.mp3"];
-
 
 	window.onkeyup = function(event) {
 		if ((event.keyCode == (32))) { 
@@ -26,7 +22,6 @@ $(document).ready(function() {
 			var imageIndex =  (imageLinks[c]);    //variable for loadPicture() pull from image array with same index as computerWord
 			var loadSongs = (songs[c]);			//variable for loadSong() to pull from songs array with same index as computerWord
 			
-
 			function loadPicture () {									//function to load image URLs from imageLinks array when game ends
 				$('#bgImage').css({'background-image':'url('+imageIndex+')'});
 			}
@@ -42,6 +37,15 @@ $(document).ready(function() {
 			function loadGif () {	                 					//randomly selects background image from array when game is initialized
 				var backgroundImage = (backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)]);   
 				$('#bgImage').css({'background-image':'url('+backgroundImage+')'});
+			}
+
+			function endGame () {
+				$("#guessBanner").html("");
+    					$('#lettersG').html("");
+						$('#lettersR').html("");
+						$('#guessedLetters').html("");
+						$('<div>').attr('id','blink2').css({'color':'blue'}).text('Press Space Bar To Play Again').appendTo('#container');
+						$('#blink2').blink();	
 			}
 
           	var html = "<p id='guessBanner'>GUESS A LETTER</p>" +           //basic HTML for game load screen
@@ -80,7 +84,7 @@ $(document).ready(function() {
 				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
 					alert("You have already guessed this letter.  Guess again");
 				}
-				else if ((lettersRemaining != 0) && (remainingGuesses != 0)) {
+				else if ((lettersRemaining != 0) && (remainingGuesses != 0))  {
 					var j = (computerWord.indexOf(userGuess));
     				if (j === -1) {
     					lettersGuessed.push(userGuess);
@@ -105,27 +109,17 @@ $(document).ready(function() {
     					loadPicture();
     					loadSong();
     					wins++;
-    					$("#win").html('Wins: ' + wins);
-    					$("#guessBanner").html("");
+    					$("#win").html('Wins: ' + wins);		
     					$("#answer").html("You have won the game");
-    					$('#lettersG').html("");
-						$('#lettersR').html("");
-						$('#guessedLetters').html("");
-						$('<div>').attr('id','blink2').css({'color':'blue'}).text('Press Space Bar To Play Again').appendTo('#container');
-						$('#blink2').blink();
+    					endGame();
 						
     				}
     				if (remainingGuesses === 0) {
     					loadPicture();
     					losses++;
     					$("#lose").html('Losses: ' + losses);
-    					$("#guessBanner").html("");
     					$("#answer").html("You have lost the game");
-    					$('#lettersG').html("");
-						$('#lettersR').html("");
-						$('#guessedLetters').html("");
-						$('<div>').attr('id','blink2').css({'color':'blue'}).text('Press Space Bar To Play Again').appendTo('#container');
-						$('#blink2').blink();		    						
+    					endGame();	    						
     				}
 	    		}					       	
 	      	}
