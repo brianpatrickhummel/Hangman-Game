@@ -14,28 +14,21 @@ $(document).ready(function() {
 
 	window.onkeyup = function(event) {
 		if ((event.keyCode == (32))) { 
-			$('#blink2').remove();         //removes the Press Space Bar to Play Again message from Game End of previous session
+			$('#blink2').remove();         //removes the Blink() affected Press Space Bar to Play Again message from Game End of previous session
 			$('#blink2').remove();
 			
-			var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
-			// console.log(computerWord);
-			var c = potentialWords.indexOf(computerWord); 
-			var imageIndex =  (imageLinks[c]);    //variable to pull from image array with same index as computerWord
-			var lettersRemaining = (computerWord.length - (computerWord.split(' ').length-1));   //will subtract any spaces from lettersRemaining
 			var remainingGuesses = 8 
-			var lettersGuessed = [];
+			var lettersGuessed = [];     
 			var answerArray = []; 
-			var loadSongs = (songs[c]);
-		  	// document.getElementById("music").pause();
+			var computerWord =  potentialWords[Math.floor(Math.random() * potentialWords.length)];
+			var lettersRemaining = (computerWord.length - (computerWord.split(' ').length-1));   //will subtract any spaces from lettersRemaining
+			var c = potentialWords.indexOf(computerWord);   //index referencing index of computerWord to be used for selecting matched photos/songs from arrays
+			var imageIndex =  (imageLinks[c]);    //variable for loadPicture() pull from image array with same index as computerWord
+			var loadSongs = (songs[c]);			//variable for loadSong() to pull from songs array with same index as computerWord
 			
 
 			function loadPicture () {									//function to load image URLs from imageLinks array when game ends
 				$('#bgImage').css({'background-image':'url('+imageIndex+')'});
-			}
-
-			function loadGif () {	                  //function to load background gif
-				var backgroundImage = (backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)]);   //random selects background image from array when game is initialized
-				$('#bgImage').css({'background-image':'url('+backgroundImage+')'});
 			}
 
 			function loadSong () {
@@ -46,7 +39,10 @@ $(document).ready(function() {
 				audioElement.play();
 			}
 
-
+			function loadGif () {	                 					//randomly selects background image from array when game is initialized
+				var backgroundImage = (backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)]);   
+				$('#bgImage').css({'background-image':'url('+backgroundImage+')'});
+			}
 
           	var html = "<p id='guessBanner'>GUESS A LETTER</p>" +           //basic HTML for game load screen
           	"<p id= 'win' >Wins: " + wins + "</p>" +
@@ -81,7 +77,6 @@ $(document).ready(function() {
 					alert("Please enter an alphabetical letter");
           		}
           
-
 				if (((lettersGuessed.indexOf(userGuess)) !== -1) || ((answerArray.indexOf(userGuess)) !== -1)) {
 					alert("You have already guessed this letter.  Guess again");
 				}
