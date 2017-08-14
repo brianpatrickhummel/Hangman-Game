@@ -2,7 +2,6 @@
 	box-sizing: border-box;
 }
 
-
 body {
 	margin:  50px 0;
 	color: yellow;
@@ -13,11 +12,11 @@ body {
 	font-family: 'Orbitron', sans-serif;
 	/*font-family: 'Maven Pro', sans-serif;*/
 	background:  no-repeat center center fixed; 
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
-  	background-color: black;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: black;
 }
 
 #blink {
@@ -69,13 +68,9 @@ h1 {
 }
 
 
-
-
-
-
 @media only screen and (max-width: 992px) {  
 
-#guessBanner {
+	#guessBanner {
     font-size: 55px;
     letter-spacing: 7px;
 	}
