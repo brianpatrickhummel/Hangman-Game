@@ -7,10 +7,10 @@ My FIRST application! Built with Javascript and jQuery. Other than using the jQu
 ## Features of the application include:
 
 * Displays the number of guesses that remain.
-* Displays the remaining number of unguessed letters.
+* Displays the remaining number of un-guessed letters.
 * Tracks which letters have already been guessed.
 * Alerts when a duplicate letter guess has been made.
-* Diplays a photo of, and plays a song by, the musical group at the round's end.
+* Displays a photo of, and plays a song by, the musical group at the round's end.
 * The song continues to play as background music throughout the next round of guessing.
 * Tracks number of wins and losses.
  
