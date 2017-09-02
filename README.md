@@ -2,7 +2,7 @@
 
 ### A simple version of the classic Hangman game where the user has 9 attempts at guessing the name of a musical group. 
 
-My FIRST application! Built with Javascript and jQuery. No other libraries or frameworks were used.  Responsive layout via CSS media queries.  Deployed via GitPages.
+My FIRST application! Built with Javascript and jQuery. Other than using the jQuery Blink library to animate the home screen message, no other libraries or frameworks were used.  Responsive layout via CSS media queries.  Deployed via GitPages.
 
 ## Features of the application include:
 
