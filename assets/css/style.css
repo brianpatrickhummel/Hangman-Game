@@ -1,183 +1,173 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	margin:  50px 0;
-	color: yellow;
-	font-size: 38px;
-	text-align: center;
-	letter-spacing: 3px;
-	/*font-family: 'VT323', monospace;*/
-	font-family: 'Orbitron', sans-serif;
-	/*font-family: 'Maven Pro', sans-serif;*/
-	background:  no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-color: black;
+  margin: 50px 0;
+  color: yellow;
+  font-size: 38px;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: "Orbitron", sans-serif;
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: black;
 }
 
 #blink {
-	margin-top: 290px;
-	font-size: 60px;
+  margin-top: 290px;
+  font-size: 60px;
 }
 
 #blink2 {
-	margin-bottom: 200px;
-	font-size: 60px;
+  margin-bottom: 200px;
+  font-size: 60px;
 }
 
 h1 {
-	margin-bottom: 50px;
-	
+  margin-bottom: 50px;
 }
 #guessBanner {
-	font-size: 60px;
-	margin-bottom: 50px;
-	letter-spacing: 8px;
+  font-size: 60px;
+  margin-bottom: 50px;
+  letter-spacing: 8px;
 }
 
 #guessedLetters {
-	letter-spacing: 8px;
-	margin-bottom: 10px;
+  letter-spacing: 8px;
+  margin-bottom: 10px;
 }
 
-#lose{
-	margin-bottom: 100px;
+#lose {
+  margin-bottom: 100px;
 }
 
 #image {
-	width: 100%;
-	height: auto;
-	text-align: left;
+  width: 100%;
+  height: auto;
+  text-align: left;
 }
 
 #answer {
-	margin-top: 50px;
-	margin-bottom:100px;
-	font-size: 55px;
-	color: orange;	
-	width: 100%;
-	text-align: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-size: 55px;
+  color: orange;
+  width: 100%;
+  text-align: center;
 }
 
-#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 28px;
+#lettersG p,
+#lettersR p,
+#guessedLetters p {
+  font-size: 28px;
 }
 
-
-@media only screen and (max-width: 992px) {  
-
-	#guessBanner {
+@media only screen and (max-width: 992px) {
+  #guessBanner {
     font-size: 55px;
     letter-spacing: 7px;
-	}
-	
-	#win {
-		font-size: 38px;
-	}
+  }
 
- 	#lose {
-		margin-bottom: 100px;
-		font-size: 38px;
-	}
+  #win {
+    font-size: 38px;
+  }
 
-	#answer {
-		margin-top: 25px;
-		font-size: 55px;
-		margin-bottom: 85px;
-	}
+  #lose {
+    margin-bottom: 100px;
+    font-size: 38px;
+  }
 
-	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 26px;
-	margin-bottom: 20px;
-	}
+  #answer {
+    margin-top: 25px;
+    font-size: 55px;
+    margin-bottom: 85px;
+  }
 
-	#blink {
-	margin-top: 200px;
-	font-size: 50px;
-	}
+  #lettersG p,
+  #lettersR p,
+  #guessedLetters p {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
 
-	#blink2 {
-		margin-bottom: 150px;
-		font-size: 50px;
-	}
+  #blink {
+    margin-top: 200px;
+    font-size: 50px;
+  }
+
+  #blink2 {
+    margin-bottom: 150px;
+    font-size: 50px;
+  }
 }
-
-
-
-
 
 @media only screen and (max-width: 767px) {
-
-	#guessBanner {
+  #guessBanner {
     font-size: 45px;
     letter-spacing: 6px;
-	}
-	
-	#win {
-		font-size: 30px;
-	}
+  }
 
- 	#lose {
-		margin-bottom: 55px;
-		font-size: 30px;
-	}
+  #win {
+    font-size: 30px;
+  }
 
-	#answer {
-		font-size: 45px;
-		line-height: 1.8;
-		margin-bottom:80px;
-	}
+  #lose {
+    margin-bottom: 55px;
+    font-size: 30px;
+  }
 
-	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 20px;
-	margin-bottom: 30px;
-	}
+  #answer {
+    font-size: 45px;
+    line-height: 1.8;
+    margin-bottom: 80px;
+  }
 
-	#blink {
-	margin-top: 200px;
-	font-size: 40px;
-	}
+  #lettersG p,
+  #lettersR p,
+  #guessedLetters p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
 
-	#blink2 {
-		margin-bottom: 150px;
-		font-size: 40px;
-	}
-} 
-
-
-
-
-
-@media only screen and (max-width: 576px) {
- 	
- 	#guessBanner {
+  #blink {
+    margin-top: 200px;
     font-size: 40px;
-    letter-spacing: 6px;
-	}
-	
-	#win {
-		font-size: 25px;
-	}
+  }
 
- 	#lose {
-		margin-bottom: 45px;
-		font-size: 25px;
-	}
-
- 	#answer {
-		font-size: 35px;
-		margin-bottom: 75px;
-	}
-
-	#lettersG p, #lettersR p, #guessedLetters p {
-	font-size: 18px;
-	margin-bottom: 40px;
-	}
+  #blink2 {
+    margin-bottom: 150px;
+    font-size: 40px;
+  }
 }
 
+@media only screen and (max-width: 576px) {
+  #guessBanner {
+    font-size: 40px;
+    letter-spacing: 6px;
+  }
 
+  #win {
+    font-size: 25px;
+  }
 
+  #lose {
+    margin-bottom: 45px;
+    font-size: 25px;
+  }
+
+  #answer {
+    font-size: 35px;
+    margin-bottom: 75px;
+  }
+
+  #lettersG p,
+  #lettersR p,
+  #guessedLetters p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+}
