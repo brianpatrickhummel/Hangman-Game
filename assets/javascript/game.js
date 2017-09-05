@@ -129,10 +129,10 @@ window.onkeyup = function(event) {
 
     var html =
       "<p id='guessBanner'>GUESS A LETTER</p>" + //basic HTML for game load screen
-      "<p id= 'win' >Wins: " +
+      "<p id= 'win' >WINS: " +
       wins +
       "</p>" +
-      "<p id= 'lose' >Losses: " +
+      "<p id= 'lose' >LOSSES: " +
       losses +
       "</p>";
     document.querySelector("#game").innerHTML = html; //loading basic HTML screen
