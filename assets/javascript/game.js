@@ -82,14 +82,15 @@ window.onkeyup = function(event) {
   if (event.keyCode == 32) {
     $("#blink2").remove(); //removes the Blink() affected Press Space Bar to Play Again message from Game End of previous session
     $("#blink2").remove();
-
+    $("#guessBanner").html("");
+    $("#lettersG").html("");
+    $("#lettersR").html("");
+    $("#guessedLetters").html("");
     var remainingGuesses = 8;
     var lettersGuessed = [];
     var answerArray = [];
-    var computerWord =
-      potentialWords[Math.floor(Math.random() * potentialWords.length)];
-    var lettersRemaining =
-      computerWord.length - (computerWord.split(" ").length - 1); //will subtract any spaces from lettersRemaining
+    var computerWord = potentialWords[Math.floor(Math.random() * potentialWords.length)];
+    var lettersRemaining = computerWord.length - (computerWord.split(" ").length - 1); //will subtract any spaces from lettersRemaining
     var c = potentialWords.indexOf(computerWord); //index referencing index of computerWord to be used for selecting matched photos/songs from arrays
     var imageIndex = imageLinks[c]; //variable for loadPicture() pull from image array with same index as computerWord
     var loadSongs = songs[c]; //variable for loadSong() to pull from songs array with same index as computerWord
@@ -109,8 +110,7 @@ window.onkeyup = function(event) {
 
     function loadGif() {
       //randomly selects background image from array when game is initialized
-      var backgroundImage =
-        backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)];
+      var backgroundImage = backgroundGifs[Math.floor(Math.random() * backgroundGifs.length)];
       $("#bgImage").css({ "background-image": "url(" + backgroundImage + ")" });
     }
 
@@ -163,10 +163,7 @@ window.onkeyup = function(event) {
         alert("Please enter an alphabetical letter");
       }
 
-      if (
-        lettersGuessed.indexOf(userGuess) !== -1 ||
-        answerArray.indexOf(userGuess) !== -1
-      ) {
+      if (lettersGuessed.indexOf(userGuess) !== -1 || answerArray.indexOf(userGuess) !== -1) {
         alert("You have already guessed this letter.  Guess again");
       } else if (lettersRemaining != 0 && remainingGuesses != 0) {
         var j = computerWord.indexOf(userGuess);
@@ -185,18 +182,10 @@ window.onkeyup = function(event) {
           }
         }
 
-        $("#lettersG").html(
-          "<p>Guesses Remaining: " + remainingGuesses + " </p>"
-        );
-        $("#lettersR").html(
-          "<p>Number of unguessed letters: " + lettersRemaining + "</p>"
-        );
-        $("#guessedLetters").html(
-          "<p>Incorrect letters guessed: " + lettersGuessed + "</p>"
-        );
-        document.getElementById("answer").innerHTML = answerArray.join(
-          "&nbsp;"
-        );
+        $("#lettersG").html("<p>Guesses Remaining: " + remainingGuesses + " </p>");
+        $("#lettersR").html("<p>Number of unguessed letters: " + lettersRemaining + "</p>");
+        $("#guessedLetters").html("<p>Incorrect letters guessed: " + lettersGuessed + "</p>");
+        document.getElementById("answer").innerHTML = answerArray.join("&nbsp;");
 
         if (lettersRemaining === 0) {
           $("#music").remove(); //removes the current <audio> element thereby stopping any currently playing song
