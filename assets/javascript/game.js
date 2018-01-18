@@ -78,9 +78,8 @@ var songs = [
   "assets/music/uncleacid.mp3"
 ];
 
-$(document).on("click", "#blink", () => {
-  $("#blink").remove();
-  $("#blink2").remove();
+$(document).on("click", ".blinkcontainer", () => {
+  $(".blinkcontainer").remove();
   $("#guessBanner").html("");
   $("#lettersG").html("");
   $("#lettersR").html("");
@@ -119,8 +118,7 @@ $(document).on("click", "#blink", () => {
     $("#lettersR").html("");
     $("#guessedLetters").html("");
     $("<div>")
-      .attr("id", "blink")
-      .css({ color: "blue" })
+      .attr("class", "blinkcontainer")
       .html("<p id='blink'>Click<a class='keys'> Here </a> To Begin</p>")
       .prependTo("#game");
     $("#blink").blink();
