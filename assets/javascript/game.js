@@ -79,7 +79,7 @@ var songs = [
 ];
 
 window.onkeyup = function(event) {
-  if (event.keyCode == 32) {
+  if (event.keyCode == 32 && event.ctrlKey) {
     $("#blink2").remove(); //removes the Blink() affected Press Space Bar to Play Again message from Game End of previous session
     $("#blink2").remove();
     $("#guessBanner").html("");
