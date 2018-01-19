@@ -18,7 +18,7 @@ body {
 }
 
 #blink {
-  margin: 370px 10px 10px 10px;
+  margin: 170px 10px 10px 10px;
   font-size: 40px;
 }
 
@@ -29,7 +29,7 @@ body {
 
 .keys {
   color: red;
-  font-size: 42px;
+  font-size: 52px;
 }
 
 h1 {
@@ -106,8 +106,12 @@ h1 {
   }
 
   #blink {
-    margin-top: 200px;
-    font-size: 50px;
+    margin-top: 150px;
+    font-size: 30px;
+  }
+
+  .keys {
+    font-size: 42px;
   }
 
   #blink2 {
@@ -145,8 +149,13 @@ h1 {
   }
 
   #blink {
-    margin-top: 200px;
-    font-size: 40px;
+    margin-top: 140px;
+    font-size: 28px;
+  }
+
+  .keys {
+    color: red;
+    font-size: 34px;
   }
 
   #blink2 {

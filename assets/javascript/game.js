@@ -119,7 +119,7 @@ $(document).on("click", ".blinkcontainer", () => {
     $("#guessedLetters").html("");
     $("<div>")
       .attr("class", "blinkcontainer")
-      .html("<p id='blink'>Click<a class='keys'> Here </a> To Begin</p>")
+      .html("<p id='blink'>Click<a class='keys'> Here </a> To Play Again</p>")
       .prependTo("#game");
     $("#blink").blink();
   }
